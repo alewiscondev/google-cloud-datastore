@@ -15,9 +15,6 @@
  */
 package com.google.api.services.datastore.client;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpResponse;
@@ -134,9 +131,6 @@ public class LocalDevelopmentDatastore extends Datastore {
    */
   public synchronized void start(String sdkPath, String dataset, String... cmdLineOptions)
       throws LocalDevelopmentDatastoreException {
-    checkNotNull(sdkPath, "sdkPath cannot be null");
-    checkNotNull(dataset, "dataset cannot be null");
-    checkState(state == State.NEW, "Cannot call start() more than once.");
     try {
       startDatastoreInternal(sdkPath, dataset, cmdLineOptions);
       state = State.STARTED;
@@ -216,7 +210,6 @@ public class LocalDevelopmentDatastore extends Datastore {
   }
 
   public File getDatasetDirectory() {
-    checkState(state == State.STARTED);
     return datasetDirectory;
   }
 

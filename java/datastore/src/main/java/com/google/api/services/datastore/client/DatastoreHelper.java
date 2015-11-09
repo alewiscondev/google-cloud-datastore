@@ -20,7 +20,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.compute.ComputeCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson.JacksonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.datastore.DatastoreV1.CompositeFilter;
 import com.google.api.services.datastore.DatastoreV1.Entity;
 import com.google.api.services.datastore.DatastoreV1.EntityOrBuilder;
@@ -498,7 +498,7 @@ public final class DatastoreHelper {
    */
   public static ByteString getByteString(ValueOrBuilder value) {
     if (value.getMeaning() == 18 && value.hasStringValue()) {
-      return value.getStringValueBytes();
+      return ByteString.copyFromUtf8(value.getStringValue());
     } else if (value.hasBlobValue()) {
       return value.getBlobValue();
     }
