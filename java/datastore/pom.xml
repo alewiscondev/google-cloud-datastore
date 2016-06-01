@@ -51,7 +51,7 @@
           <artifactId>protoc-bundled-plugin</artifactId>
           <version>1.4.47</version>
           <configuration>
-            <protobufVersion>2.4.1</protobufVersion>
+            <protobufVersion>2.5.0</protobufVersion>
           </configuration>
         </plugin>
       </plugins>
